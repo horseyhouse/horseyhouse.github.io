@@ -1,0 +1,5 @@
+#borderstar {
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: url(star.gif) repeat;
+}
