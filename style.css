@@ -2,7 +2,7 @@
     margin: 20px;
     border: 25px solid transparent;
     padding: 10px;
-    border-image-source: url(9stars.gif);
+    border-image-source: url(media/9stars.gif);
     border-image-slice: 33.33%;
     border-image-repeat: round;
 }
