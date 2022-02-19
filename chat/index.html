@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Oyster Chat</title>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <input v-model="myMessage" >
+    <button v-on:click="sendMyMessage">Send</button>
+
+    <div v-for="message in messages">
+      {{ message.signed }}: {{ message.content }}
+    </div>
+
+  </div>
+
+  <script type="module" src="main.js"></script>
+
+</body>
+</html>
