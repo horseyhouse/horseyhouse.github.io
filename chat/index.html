@@ -13,7 +13,7 @@
     <button v-on:click="sendMyMessage">Send</button>
 
     <div v-for="message in messages">
-      {{ message.signed }}: {{ message.content }}
+      {{ signatureNames[message.signed] }}: {{ message.content }}
     </div>
 
   </div>
