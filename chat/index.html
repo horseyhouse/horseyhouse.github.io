@@ -9,12 +9,12 @@
 
   <div id="app">
 
+    <div v-for="messageID in sortedMessageIDs">
+      {{ signatureNames[messages[messageID].signed] }}: {{ messages[messageID].content }}
+    </div>
+
     <input v-model="myMessage" >
     <button v-on:click="sendMyMessage">Send</button>
-
-    <div v-for="message in messages">
-      {{ signatureNames[message.signed] }}: {{ message.content }}
-    </div>
 
   </div>
 

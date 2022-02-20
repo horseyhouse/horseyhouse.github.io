@@ -62,7 +62,7 @@ const app = new Vue({
         }
       }
 
-      // Add the message to our list of messages
+      // Add the message to our library
       this.$set(this.messages, message.uuid, message)
     },
 
@@ -75,5 +75,12 @@ const app = new Vue({
       })
     },
 
+  },
+
+  computed: {
+    sortedMessageIDs: function() {
+      return Object.keys(this.messages).sort(
+        (a, b) => this.messages[a].created - this.messages[b].created);
+    },
   },
 })
