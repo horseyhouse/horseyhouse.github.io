@@ -35,13 +35,16 @@ const app = new Vue({
       )
 
       // Get some older messages, too
-      //await this.gf.query(
-        //this.message_query,
-        //time,
-        //this.processMessage.bind(this))
+      const old_messages = await this.gf.query(
+        this.message_query,
+        time,
+        5)
+      old_messages.map(this.processMessage)
     },
 
-    processMessage: async function(message) {
+    processMessage: async function(data) {
+      const message = data.object
+
       // Add the message to our list of messages
       this.$set(this.messages, message.uuid, message)
     },
