@@ -1,12 +1,12 @@
 import Vue     from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
-//import GraffitiTools from 'https://sportdeath.github.io/graffiti-tools/graffiti-tools.js'
-import GraffitiTools from '/graffiti-tools/graffiti-tools.js'
+import GraffitiTools from 'https://sportdeath.github.io/graffiti-tools/graffiti-tools.js'
+//import GraffitiTools from '/graffiti-tools/graffiti-tools.js'
 
 const app = new Vue({
   el: '#app',
   data: {
-    //gf: new GraffitiTools('https://graffiti.csail.mit.edu'),
-    gf: new GraffitiTools('http://localhost:5000'),
+    gf: new GraffitiTools('https://graffiti.csail.mit.edu'),
+    //gf: new GraffitiTools('http://localhost:5000'),
     message_query: {
       tag: 'oyster',
       '$or': [
