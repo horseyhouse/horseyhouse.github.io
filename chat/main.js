@@ -1,23 +1,23 @@
 import Vue     from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
 import GraffitiTools from 'https://sportdeath.github.io/graffiti-tools/graffiti-tools.js'
+//import GraffitiTools from '/graffiti-tools/graffiti-tools.js'
 
 const app = new Vue({
   el: '#app',
   data: {
     gf: new GraffitiTools('https://graffiti.csail.mit.edu'),
+    //gf: new GraffitiTools('http://localhost:5000'),
     message_query: {
       tag: 'oyster',
       '$or': [
         { type: 'Message',
           content: { '$type': 'string' } },
-        { '$not': { type: 'Message' },
+        { type: { '$ne': 'Message' },
           summary: { '$type': 'string' } }
       ]
     },
-    message_query: {},
     myMessage: "",
     messages: {},
-    names: {}
   },
 
   created: function() {
@@ -33,6 +33,12 @@ const app = new Vue({
         this.message_query,
         this.processMessage.bind(this)
       )
+
+      // Get some older messages, too
+      //await this.gf.query(
+        //this.message_query,
+        //time,
+        //this.processMessage.bind(this))
     },
 
     processMessage: async function(message) {
@@ -44,7 +50,7 @@ const app = new Vue({
       this.gf.insert({
         type: 'Message',
         content: this.myMessage,
-        summary: "sent a message",
+        summary: `published the message "${this.myMessage}"`,
         tag: ["oyster"]
       })
     },
