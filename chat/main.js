@@ -1,4 +1,4 @@
-import Vue     from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
+import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
 import GraffitiTools from 'https://sportdeath.github.io/graffiti-tools/graffiti-tools.js'
 //import GraffitiTools from '/graffiti-tools/graffiti-tools.js'
 
@@ -18,6 +18,8 @@ const app = new Vue({
     },
     myMessage: "",
     messages: {},
+    queryTime: 0,
+    numOldLoaded: 0,
     signatureNames: {}
   },
 
@@ -29,18 +31,23 @@ const app = new Vue({
 
     initialize: async function() {
       // Listen to new messages
-      const time = await this.gf.querySocketAdd(
+      this.queryTime = await this.gf.querySocketAdd(
         "message_query",
         this.message_query,
         this.processMessage.bind(this)
       )
 
       // Get some older messages, too
-      const old_messages = await this.gf.queryMany(
-        this.message_query,
-        time,
-        5)
-      old_messages.map(this.processMessage)
+      this.loadOlderMessages()
+    },
+
+    loadOlderMessages: async function() {
+      const oldMessages = await this.gf.queryMany(
+        this.message_query, this.queryTime,
+        5,
+        this.numOldLoaded)
+      this.numOldLoaded += oldMessages.length
+      oldMessages.map(this.processMessage)
     },
 
     processMessage: async function(data) {

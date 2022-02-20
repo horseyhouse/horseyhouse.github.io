@@ -9,6 +9,8 @@
 
   <div id="app">
 
+    <button v-on:click="loadOlderMessages">Load Earlier</button>
+
     <div v-for="messageID in sortedMessageIDs">
       {{ signatureNames[messages[messageID].signed] }}: {{ messages[messageID].content }}
     </div>
