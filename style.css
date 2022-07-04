@@ -1,22 +1,58 @@
-.borderstar {
-    margin: 20px;
-    border: 25px solid transparent;
-    padding: 10px;
-    border-image-source: url(media/9stars.gif);
-    border-image-slice: 33.33%;
-    border-image-repeat: round;
+body {
+  background-color: black;
+  color: white;
+  font-family: Apple Chancery, cursive;
 }
 
-.txt-in-btn {
-    height: 25%;
-    width: 100%;
+h1, h2, ul{
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
-.img-in-btn {
-    height: 75%;
-    width: 100%;
+h1, h2 {
+  align-items: center;
+  text-align: center;
 }
 
-p {
-    aspect-ratio: 1/1;
+ul {
+  padding: 2em;
+  flex-wrap: wrap;
+}
+
+li {
+  /*dimensions*/
+  flex-basis: 20em;
+  aspect-ratio: 1 / 1;
+  /*star border*/
+  border: 1em solid;
+  border-image-source: url(media/9stars.gif);
+  border-image-slice: 33.33%;
+  border-image-repeat: round;
+  /*inner elements*/
+  display: inline-block;
+  text-align: center;
+}
+
+/*button pictures*/
+li img {
+  box-sizing: border-box;
+  max-width: 90%;
+  height: 25%;
+}
+li img + img {
+  padding: 1em;
+  height: 75%;
+}
+
+li:hover {
+  animation: tweak 0.2s infinite;
+}
+
+@keyframes tweak { 
+ 0% { transform: translateX(0) }
+ 25% { transform: translateX(5px) }
+ 50% { transform: translateX(-5px) }
+ 75% { transform: translateX(5px) }
+ 100% { transform: translateX(0) }
 }
