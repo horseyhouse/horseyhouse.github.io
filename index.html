@@ -5,23 +5,35 @@
   <link rel="stylesheet" href="./style.css">
   <title>Oysters 69</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
 </head>
 
 <body>
+<div id="app">
+
   <h1>
     <img src="media/oyster.gif" alt="Make A Noise Like An Oyster">
-    Hello Fellow Oyster
+    <router-link to="/">
+      Hello Fellow Oyster
+    </router-link>
     <img src="media/oyster.gif" alt="Make A Noise Like An Oyster">
   </h1>
   <h2>
     <img src="media/construction.gif" alt="Under Construction">
   </h2>
 
+  <router-view></router-view>
+</div>
+
+<script type="text/x-template" id="home">
   <ul>
-    <li>
-      <img src="media/about.gif" alt="About">
-      <img src="media/hamster-house.gif" alt="About">
-    </li>
+    <router-link to="/about">
+      <li>
+        <img src="media/about.gif" alt="About">
+        <img src="media/hamster-house.gif" alt="About">
+      </li>
+    </router-link>
     <a href="http://tfh.sh:46202/transmission/web/">
       <li>
         <img src="media/torrenting.gif" alt="Torrenting">
@@ -59,6 +71,33 @@
       </li>
     </a>
   </ul>
+</script>
+
+<script type="text/x-template" id="about">
+  we're really cool.
+</script>
+
+<script type="module">
+  import Graffiti from "https://csail-graffiti.github.io/vue/plugin.js"
+
+  const Router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes: [
+      { path: '/', component: {
+        template: '#home'
+      }},
+      { path: '/about', component: {
+        template: '#about'
+      }}
+    ],
+  })
+
+  Graffiti('https://graffiti.csail.mit.edu').then(g=> {
+    Vue.createApp().use(g)
+    .use(Router)
+    .mount('#app')
+  })
+</script>
 
 </body>
 </html> 

@@ -57,6 +57,19 @@ li:hover {
  100% { transform: translateX(0) }
 }
 
-a {
+ul a {
   display: contents;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.router-link-active {
+  text-decoration: underline;
 }
