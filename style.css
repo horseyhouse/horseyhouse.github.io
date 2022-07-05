@@ -2,6 +2,7 @@ body {
   background-color: black;
   color: white;
   font-family: Apple Chancery, cursive;
+  overflow-y: scroll; /* always show scrollbar */
 }
 
 h1, h2, ul{
@@ -15,9 +16,21 @@ h1, h2 {
   text-align: center;
 }
 
+h3 {
+  color: deeppink;
+  width: fit-content;
+  transform: rotate(-15deg);
+  font-size: 170%;
+  text-decoration: underline dotted;
+  margin: 0;
+  margin-left: 5vw;
+}
+
 ul {
   padding: 2em;
   flex-wrap: wrap;
+  margin: 0;
+  margin-bottom: 3em;
 }
 
 li {
