@@ -75,10 +75,11 @@ li {
 }
 
 ul li img {
-  max-width: 49%;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
-  margin-top: 0.5%;
+  max-width: 50%;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  padding-top: 0.5%;
+  box-sizing: border-box;
 }
 
 /*button pictures*/
