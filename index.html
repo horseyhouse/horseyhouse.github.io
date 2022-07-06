@@ -11,13 +11,18 @@
 
 <body>
 <div id="app">
-
   <h1>
-    <img src="media/oyster.gif" alt="Make A Noise Like An Oyster">
+    <log-in></log-in>
     <router-link to="/">
-      Hello Fellow Oyster
+      Hello
+      <template v-if="$graffiti.loggedIn">
+        Anonymous Oyster
+      </template>
+      <template v-else>
+        Fellow Oyster
+      </template>
     </router-link>
-    <img src="media/oyster.gif" alt="Make A Noise Like An Oyster">
+    <log-in></log-in>
   </h1>
   <h2>
     <img src="media/construction.gif" alt="Under Construction">
@@ -25,6 +30,17 @@
 
   <router-view></router-view>
 </div>
+
+<script type="text/x-template" id="login">
+  <label>
+    <input type="checkbox" class="login"
+      :checked="$graffiti.loggedIn"
+      @change="$event.target.checked?
+        $graffiti.logIn() :
+        $graffiti.logOut()">
+    <img src="./media/oyster.gif" />
+  </label>
+</script>
 
 <script type="text/x-template" id="home">
   <h3>
@@ -38,19 +54,19 @@
         <img src="media/hamster-house.gif" alt="About">
       </li>
     </router-link>
-    <a href="/photos">
+    <router-link to="/photos">
       <li>
         <img src="media/photos.gif" alt="Photos">
         <img src="media/furby-cam.GIF" alt="Photos">
       </li>
-    </a>
-    <li>
-      <img src="media/ledger.gif" alt="Ledger">
-      <img src="media/monopoly-man.gif" alt="Ledger">
-    </li>
+    </router-link>
     <li>
       <img src="media/events.gif" alt="Events">
       <img src="media/calendar.gif" alt="Events">
+    </li>
+    <li>
+      <img src="media/ledger.gif" alt="Ledger">
+      <img src="media/monopoly-man.gif" alt="Ledger">
     </li>
   </ul>
 
@@ -85,11 +101,31 @@
 </script>
 
 <script type="text/x-template" id="about">
-  we're really cool.
+  <h3>
+    About Us
+  </h3>
+  <p>
+    we're really cool.
+  </p>
+</script>
+
+<script type="text/x-template" id="photos">
+  <h3>
+    Photos
+  </h3>
+
+  <p v-if="!$graffiti.loggedIn">
+    Click "Make a noise..." to log in and post some photos!
+  </p>
+  <p v-else>
+    Photo posting coming soon..
+  </p>
 </script>
 
 <script type="module">
   import Graffiti from "https://csail-graffiti.github.io/vue/plugin.js"
+
+  const Login = { template: '#login' }
 
   const Router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
@@ -99,12 +135,16 @@
       }},
       { path: '/about', component: {
         template: '#about'
+      }},
+      { path: '/photos', component: {
+        template: '#photos'
       }}
     ],
   })
 
   Graffiti('https://graffiti.csail.mit.edu').then(g=> {
     Vue.createApp().use(g)
+    .component('log-in', Login)
     .use(Router)
     .mount('#app')
   })
