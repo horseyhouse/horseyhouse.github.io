@@ -6,7 +6,7 @@ body {
   overflow-x: clip;
 }
 
-h1, h2, ul {
+h1, h2, ol {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -43,7 +43,12 @@ h3 {
   margin-left: 5vw;
 }
 
-ul {
+h3 img {
+  height: 2em;
+  display: block;
+}
+
+ol {
   padding: 2em;
   margin: 0;
 }
@@ -73,7 +78,7 @@ li img + img {
   height: 75%;
 }
 
-li:hover, input:not(:checked):hover + img {
+a:hover, a > li:hover, label:hover {
   animation: tweak 0.2s infinite;
   cursor: pointer;
 }
@@ -86,7 +91,7 @@ li:hover, input:not(:checked):hover + img {
  100% { transform: translateX(0) }
 }
 
-ul a {
+ol a {
   display: contents;
 }
 
@@ -103,18 +108,30 @@ a:hover {
   text-decoration: underline;
 }
 
-p {
+p, ul {
   margin-left: auto;
   margin-right: auto;
   font-size: 120%;
-  max-width: 30em;
+  max-width: 50em;
 }
 
 input[type=checkbox] {
   display: none;
 }
 
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label p {
+  margin: 0;
+  font-size: 60%;
+}
+
 label img {
+  display: block;
   filter: grayscale(1);
   max-width: 90%;
 }
