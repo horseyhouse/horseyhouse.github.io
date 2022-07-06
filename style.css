@@ -6,7 +6,7 @@ body {
   overflow-x: clip;
 }
 
-h1, h2, ol {
+h1, h2, ol, ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -48,15 +48,22 @@ h3 img {
   display: block;
 }
 
-ol {
+ol, ul {
   padding: 2em;
   margin: 0;
 }
 
-li {
+ul {
+  flex-direction: column;
+}
+
+ol li {
   /*dimensions*/
   flex-basis: 20em;
   aspect-ratio: 1 / 1;
+}
+
+li {
   /*star border*/
   border: 1em solid;
   border-image-source: url(media/9stars.gif);
@@ -67,13 +74,17 @@ li {
   text-align: center;
 }
 
+ul li img {
+  max-width: 50%;
+}
+
 /*button pictures*/
-li img {
+ol li img {
   box-sizing: border-box;
   max-width: 90%;
   height: 25%;
 }
-li img + img {
+ol li img + img {
   padding: 1em;
   height: 75%;
 }
