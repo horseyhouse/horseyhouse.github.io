@@ -70,14 +70,18 @@
         <img src="./media/furby-cam.GIF" alt="Photos">
       </li>
     </router-link>
-    <li>
-      <img src="./media/events.gif" alt="Events">
-      <img src="./media/calendar.gif" alt="Events">
-    </li>
-    <li>
-      <img src="./media/ledger.gif" alt="Ledger">
-      <img src="./media/monopoly-man.gif" alt="Ledger">
-    </li>
+    <router-link to="/events">
+      <li>
+        <img src="./media/events.gif" alt="Events">
+        <img src="./media/calendar.gif" alt="Events">
+      </li>
+    </router-link>
+    <router-link to="/ledger">
+      <li>
+        <img src="./media/ledger.gif" alt="Ledger">
+        <img src="./media/monopoly-man.gif" alt="Ledger">
+      </li>
+    </router-link>
   </ol>
 
   <h3>
@@ -99,12 +103,14 @@
     </a>
     <a href="https://github.com/oysters69" target="_blank">
       <li>
-        github
+        <img src="./media/github2.gif" alt="Github">
+        <img src="./media/compooper.gif" alt="Github">
       </li>
     </a>
     <a href="https://drive.google.com/drive/folders/1X1ASnjqRPqbdrAG7p2Xe34t1mtIDAzK7" target="_blank">
       <li>
-        drive
+        <img src="./media/drive.gif" alt="Google Drive">
+        <img src="./media/google.gif" alt="Google Drive">
       </li>
     </a>
   </ol>
@@ -116,6 +122,24 @@
   </h3>
   <p>
     we're really cool.
+  </p>
+</script>
+
+<script type="text/x-template" id="events">
+  <h3>
+    <img src="./media/events.gif" alt="Events">
+  </h3>
+  <p>
+    coming soon...
+  </p>
+</script>
+
+<script type="text/x-template" id="ledger">
+  <h3>
+    <img src="./media/ledger.gif" alt="Ledger">
+  </h3>
+  <p>
+    coming soon...
   </p>
 </script>
 
@@ -176,6 +200,12 @@
       { path: '/about', component: {
         template: '#about'
       }},
+      { path: '/events', component: {
+          template: '#events'
+        }},
+      { path: '/ledger', component: {
+          template: '#ledger'
+        }},
       { path: '/photos', component: {
         template: '#photos'
       }}
