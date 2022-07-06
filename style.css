@@ -18,7 +18,7 @@ h1, h2, ol, ul {
 /* Make title into a single column
  * and remove second login button
  * when screen is too smol */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 840px) {
   h1 {
     flex-direction: column;
   }
