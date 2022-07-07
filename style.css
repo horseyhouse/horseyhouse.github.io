@@ -21,7 +21,7 @@ h1 {
 /* Make title into a single column
  * and remove second login button
  * when screen is too smol */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 840px) {
   h1 {
     flex-direction: column;
   }
@@ -42,13 +42,19 @@ h3 {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   margin: 0;
-  margin-top: 2em;
-  margin-left: 5vw;
+  margin-bottom: 1em;
+  justify-content: left;
+  flex-basis: 50%;
 }
 
 h3 img {
   height: 2em;
   display: block;
+}
+
+ol {
+  flex: 50%;
+  justify-content: left;
 }
 
 ol, ul {
@@ -60,10 +66,15 @@ ul {
   flex-direction: column;
 }
 
+div.columns {
+  display: flex;
+}
+
 ol li {
   /*dimensions*/
-  flex-basis: 20em;
+  flex-basis: 40%;
   aspect-ratio: 1 / 1;
+  flex-grow: 1;
 }
 
 li {
@@ -79,6 +90,10 @@ li {
 
 ul li img {
   max-width: 50%;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  padding-top: 0.5%;
+  box-sizing: border-box;
 }
 
 /*button pictures*/
