@@ -10,9 +10,12 @@ h1, h2, ol, ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
   text-align: center;
   gap: 1em;
+}
+
+h1 {
+  align-items: center;
 }
 
 /* Make title into a single column
@@ -143,7 +146,7 @@ label p {
 
 label img {
   display: block;
-  filter: grayscale(1);
+  filter: grayscale(0.5);
   max-width: 90%;
 }
 

@@ -64,6 +64,11 @@
         <img src="./media/hamster-house.gif" alt="About">
       </li>
     </router-link>
+    <router-link to="/chat">
+      <li>
+        Chat
+      </li>
+    </router-link>
     <router-link to="/photos">
       <li>
         <img src="./media/redPhotos.gif" alt="Photos">
@@ -119,6 +124,37 @@
   </p>
 </script>
 
+<script type="text/x-template" id="chat">
+  <h3>
+    Chat
+  </h3>
+  <p>
+    <graffiti-collection v-slot="messages"
+      :query="{
+        type: 'post',
+        summary: { $type: 'string' },
+        tags: 'oyster'
+      }">
+      <ul>
+        <li v-for="m in messages.objects.slice().reverse()" :key="m._id">
+          {{m.summary}}
+        </li>
+      </ul>
+      <p v-if="!$graffiti.loggedIn">
+        u gotta b logged in to chat homie
+      </p>
+      <form v-else @submit.prevent="messages.update({
+        type: 'post',
+        summary: message,
+        tags: ['oyster']
+      }); message=''">
+        <input v-model="message">
+        <input type="image" src="./media/oyster.jpg" border="0" alt="Submit" />
+      </form>
+    </graffiti-collection>
+  </p>
+</script>
+
 <script type="text/x-template" id="photos">
   <h3>
     <img src="./media/redPhotos.gif">
@@ -168,7 +204,7 @@
   const Login = { template: '#login' }
 
   const Router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
+    history: VueRouter.createWebHistory(),
     routes: [
       { path: '/', component: {
         template: '#home'
@@ -178,6 +214,12 @@
       }},
       { path: '/photos', component: {
         template: '#photos'
+      }},
+      { path: '/chat', component: {
+        template: '#chat',
+        data: () => ({
+          message: ''
+        })
       }}
     ],
   })
