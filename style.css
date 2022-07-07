@@ -9,25 +9,49 @@ body {
 h1, h2, ol, ul {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   text-align: center;
   gap: 1em;
+}
+
+ol, ul {
+  flex-wrap: wrap;
+}
+
+.columns {
+  display: flex;
+}
+
+.columns > div {
+  flex-basis: 50%;
+}
+
+.columns > div + div {
+  border-left: dotted deeppink;
 }
 
 h1 {
   align-items: center;
 }
 
+h1 > a {
+  display: block;
+  max-width: 10em;
+}
+
 /* Make title into a single column
  * and remove second login button
  * when screen is too smol */
-@media only screen and (max-width: 840px) {
-  h1 {
+@media only screen and (max-width: 50em) {
+  h1, .columns {
     flex-direction: column;
   }
 
   h1 a + label {
     display: none;
+  }
+
+  .columns > div + div {
+    border: none;
   }
 }
 
@@ -41,10 +65,7 @@ h3 {
   padding-right: 0.5em;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
-  margin: 0;
-  margin-bottom: 1em;
-  justify-content: left;
-  flex-basis: 50%;
+  margin: 2em;
 }
 
 h3 img {
@@ -52,13 +73,8 @@ h3 img {
   display: block;
 }
 
-ol {
-  flex: 50%;
-  justify-content: left;
-}
-
 ol, ul {
-  padding: 2em;
+  padding: 0.5em;
   margin: 0;
 }
 
@@ -66,15 +82,10 @@ ul {
   flex-direction: column;
 }
 
-div.columns {
-  display: flex;
-}
-
 ol li {
   /*dimensions*/
-  flex-basis: 40%;
+  flex-basis: 15em;
   aspect-ratio: 1 / 1;
-  flex-grow: 1;
 }
 
 li {
