@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
   <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
+  <script src="components.js"></script>
 </head>
 
 <body>
@@ -57,7 +58,7 @@
   <ol>
     <h3>
       Internal Links
-    </h3><br>
+    </h3>
     <router-link to="/about">
       <li>
         <img src="./media/about.gif" alt="About">
@@ -86,7 +87,7 @@
   <ol>
     <h3>
       External Links
-    </h3><br>
+    </h3>
     <a href="http://tfh.sh:46202/transmission/web/" target="_blank">
       <li>
         <img src="./media/torrenting.gif" alt="Torrenting">
@@ -119,9 +120,57 @@
   <h3>
     <img src="./media/about.gif" alt="About">
   </h3>
-  <p>
-    we're really cool.
-  </p>
+  <h5>Meet the hoez <3</h5>
+  <ol>
+    <li class="myli">
+      <p class="myp">Theia</p>
+      <img src="./photos/theia.jpg" alt="Theia" class="myimg">
+        <h4>she/her</h4>
+        <h5>dead bird collector</h5>
+        <h5>phd baddie</h5>
+        <h5>makes a mean ooey gooey sauce</h5>
+    </li>
+    <li class="myli">
+      <p class="myp">Moogy</p>
+      <img src="./photos/moog.jpg" alt="Moogy" class="myimg">
+      <h4>she/they</h4>
+      <h5>trash gremlin</h5>
+      <h5>noodle wrangler</h5>
+      <h5>general whore</h5>
+    </li>
+    <li class="myli">
+      <p class="myp">Lydia</p>
+      <img src="./photos/lyd.jpeg" alt="Lydia" class="myimg">
+        <h4>she/her</h4>
+        <h5>mommy</h5>
+        <h5>will check you into the boards</h5>
+        <h5>good with her hands ;)</h5>
+    </li>
+    <li class="myli">
+      <p class="myp">Ru</p>
+      <img src="./photos/ru.jpg" alt="Ru" class="myimg">
+      <h4>they/them</h4>
+      <h5>LOVES trains</h5>
+      <h5>himbo appreciator</h5>
+      <h5>crossword slut</h5>
+    </li>
+    <li class="myli">
+      <p class="myp">Noodle</p>
+      <img src="./photos/noodle.jpg" alt="Noodle" class="myimg">
+        <h4>she/they</h4>
+        <h5>rodent on stilts</h5>
+        <h5>snuggly baby</h5>
+        <h5>poops on the floor</h5>
+    </li>
+    <li class="myli">
+      <p class="myp">Jinni</p>
+      <!---<img src="./media/monopoly-man.gif" alt="Ledger" class="myimg">-->
+        <h4>she/her</h4>
+        <h5>grumpy old lady</h5>
+        <h5>loves butt scratches</h5>
+        <h5>poops in the closet</h5>
+    </li>
+  </ol>
 </script>
 
 <script type="text/x-template" id="events">
@@ -184,7 +233,6 @@
     </li>
   </ul>
 </script>
-
 <script type="module">
   import Graffiti from "https://csail-graffiti.github.io/vue/plugin.js"
 
@@ -220,4 +268,4 @@
 </script>
 
 </body>
-</html> 
+</html>

@@ -104,12 +104,13 @@ ol li img + img {
   height: 75%;
 }
 
+
 a:hover, a > li:hover, label:hover {
   animation: tweak 0.2s infinite;
   cursor: pointer;
 }
 
-@keyframes tweak { 
+@keyframes tweak {
  0% { transform: translateX(0) }
  25% { transform: translateX(5px) }
  50% { transform: translateX(-5px) }
@@ -164,4 +165,33 @@ label img {
 
 input:is(:not(:checked):hover,:checked:not(:hover)) + img {
   filter: grayscale(0);
+}
+
+.myimg {
+  height: 120%;
+}
+
+.myli {
+  flex-basis: 28%;
+  padding-bottom: 10px;
+}
+
+.myp {
+  font-size: 5em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h4 {
+  margin-bottom: 10px;
+}
+
+h4, h5 {
+  margin-top: 0;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+h5 {
+  margin-bottom: 5px;
 }
