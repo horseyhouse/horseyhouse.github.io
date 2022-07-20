@@ -1,3 +1,8 @@
+
+// experimenting with web components!
+// just pure js for now... struggled with trying to do it with vue
+// but also struggling with this too lol
+
 class StarBorder extends HTMLElement {
     constructor () {
         super();
