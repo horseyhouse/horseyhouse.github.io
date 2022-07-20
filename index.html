@@ -5,6 +5,16 @@
   <link rel="stylesheet" href="./style.css">
   <title>Oysters 69</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Redirect from 404
+    (function(){
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
   <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
   <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
   <script src="components.js"></script>
@@ -54,66 +64,76 @@
 </script>
 
 <script type="text/x-template" id="home">
-<div class="columns">
-  <ol>
-    <h3>
-      Internal Links
-    </h3>
-    <router-link to="/about">
-      <li>
-        <img src="./media/about.gif" alt="About">
-        <img src="./media/hamster-house.gif" alt="About">
-      </li>
-    </router-link>
-    <router-link to="/photos">
-      <li>
-        <img src="./media/redPhotos.gif" alt="Photos">
-        <img src="./media/furby-cam.GIF" alt="Photos">
-      </li>
-    </router-link>
-    <router-link to="/events">
-      <li>
-        <img src="./media/events.gif" alt="Events">
-        <img src="./media/calendar.gif" alt="Events">
-      </li>
-    </router-link>
-    <router-link to="/ledger">
-      <li>
-        <img src="./media/ledger.gif" alt="Ledger">
-        <img src="./media/monopoly-man.gif" alt="Ledger">
-      </li>
-    </router-link>
-  </ol>
-  <ol>
-    <h3>
-      External Links
-    </h3>
-    <a href="http://tfh.sh:46202/transmission/web/" target="_blank">
-      <li>
-        <img src="./media/torrenting.gif" alt="Torrenting">
-        <img src="./media/pirate-flag.gif" alt="Torrenting">
-      </li>
-    </a>
-    <a href="https://app.plex.tv" target="_blank">
-      <li>
-        <img src="./media/plex.gif" alt="Plex">
-        <img src="./media/film.gif" alt="Plex">
-      </li>
-    </a>
-    <a href="https://github.com/oysters69" target="_blank">
-      <li>
-        <img src="./media/github2.gif" alt="Github">
-        <img src="./media/compooper.gif" alt="Github">
-      </li>
-    </a>
-    <a href="https://drive.google.com/drive/folders/1X1ASnjqRPqbdrAG7p2Xe34t1mtIDAzK7" target="_blank">
-      <li>
-        <img src="./media/drive.gif" alt="Google Drive">
-        <img src="./media/google.gif" alt="Google Drive">
-      </li>
-    </a>
-  </ol>
-</div>
+  <div class="columns">
+    <div>
+      <h3>
+        Internal Links
+      </h3>
+      <ol>
+        <router-link to="/about">
+          <li>
+            <img src="./media/about.gif" alt="About">
+            <img src="./media/hamster-house.gif" alt="About">
+          </li>
+        </router-link>
+        <router-link to="/chat">
+          <li>
+            Chat
+          </li>
+        </router-link>
+        <router-link to="/photos">
+          <li>
+            <img src="./media/redPhotos.gif" alt="Photos">
+            <img src="./media/furby-cam.GIF" alt="Photos">
+          </li>
+        </router-link>
+        <router-link to="/events">
+          <li>
+            <img src="./media/events.gif" alt="Events">
+            <img src="./media/calendar.gif" alt="Events">
+          </li>
+        </router-link>
+        <router-link to="/ledger">
+          <li>
+            <img src="./media/ledger.gif" alt="Ledger">
+            <img src="./media/monopoly-man.gif" alt="Ledger">
+          </li>
+        </router-link>
+      </ol>
+    </div>
+
+    <div>
+      <h3>
+        External Links
+      </h3>
+      <ol>
+        <a href="http://tfh.sh:46202/transmission/web/" target="_blank">
+          <li>
+            <img src="./media/torrenting.gif" alt="Torrenting">
+            <img src="./media/pirate-flag.gif" alt="Torrenting">
+          </li>
+        </a>
+        <a href="https://app.plex.tv" target="_blank">
+          <li>
+            <img src="./media/plex.gif" alt="Plex">
+            <img src="./media/film.gif" alt="Plex">
+          </li>
+        </a>
+        <a href="https://github.com/horseyhouse" target="_blank">
+          <li>
+            <img src="./media/github2.gif" alt="Github">
+            <img src="./media/compooper.gif" alt="Github">
+          </li>
+        </a>
+        <a href="https://drive.google.com/drive/folders/1X1ASnjqRPqbdrAG7p2Xe34t1mtIDAzK7" target="_blank">
+          <li>
+            <img src="./media/drive.gif" alt="Google Drive">
+            <img src="./media/google.gif" alt="Google Drive">
+          </li>
+        </a>
+      </ol>
+    </div>
+  </div>
 </script>
 
 <script type="text/x-template" id="about">
@@ -171,6 +191,37 @@
         <h5>poops in the closet</h5>
     </li>
   </ol>
+</script>
+
+<script type="text/x-template" id="chat">
+  <h3>
+    Chat
+  </h3>
+  <p>
+    <graffiti-collection v-slot="messages"
+      :query="{
+        type: 'post',
+        summary: { $type: 'string' },
+        tags: 'oyster'
+      }">
+      <ul>
+        <li v-for="m in messages.objects.slice().reverse()" :key="m._id">
+          {{m.summary}}
+        </li>
+      </ul>
+      <p v-if="!$graffiti.loggedIn">
+        u gotta b logged in to chat homie
+      </p>
+      <form v-else @submit.prevent="messages.update({
+        type: 'post',
+        summary: message,
+        tags: ['oyster']
+      }); message=''">
+        <input v-model="message">
+        <input type="image" src="./media/oyster.jpg" border="0" alt="Submit" />
+      </form>
+    </graffiti-collection>
+  </p>
 </script>
 
 <script type="text/x-template" id="events">
@@ -239,7 +290,7 @@
   const Login = { template: '#login' }
 
   const Router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
+    history: VueRouter.createWebHistory(),
     routes: [
       { path: '/', component: {
         template: '#home'
@@ -255,6 +306,12 @@
         }},
       { path: '/photos', component: {
         template: '#photos'
+      }},
+      { path: '/chat', component: {
+        template: '#chat',
+        data: () => ({
+          message: ''
+        })
       }}
     ],
   })

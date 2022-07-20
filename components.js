@@ -59,9 +59,3 @@ class HomePageButton extends HTMLLIElement {
     }
 }
 
-window.addEventListener('load', () => {
-    customElements.define('star-border', StarBorder);
-    customElements.define('home-page-button', StarBorder);
-
-});
-
