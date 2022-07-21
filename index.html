@@ -31,6 +31,7 @@
       }
 
       const ua = navigator.userAgent.toLowerCase();
+      console.log(ua);
       const head = document.getElementsByTagName('HEAD')[0];
       //TODO: for some reason this code is being executed on firefox on mobile. why?
       if (ua.includes("safari")) {
@@ -102,7 +103,8 @@
         </router-link>
         <router-link to="/chat">
           <li>
-            Chat
+            <img src="./media/message.gif" alt="Chat">
+            <img src="./media/boardadver.gif" alt="Chat">
           </li>
         </router-link>
         <router-link to="/photos">
@@ -229,7 +231,7 @@
         tags: 'oyster'
       }">
       <ul>
-        <li v-for="m in messages.objects.slice().reverse()" :key="m._id">
+        <li v-for="m in messages.objects.slice().reverse()" :key="m._id" class="chatli">
           {{m.summary}}
         </li>
       </ul>
