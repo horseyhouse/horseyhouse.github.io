@@ -19,22 +19,26 @@
   <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
   <script src="components.js"></script>
   <script>
-    function changeBorderForSafari() {
-      const ua = navigator.userAgent.toLowerCase();
-      if (ua.includes("safari")) {
-        // Get HTML head element
-        let head = document.getElementsByTagName('HEAD')[0];
+
+      function includeStyle(head, fileName) {
         // Create new link Element
         let link = document.createElement('link');
         // set the attributes for link element
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'safari-style.css';
+        link.href = fileName;
         // Append link element to HTML head
         head.appendChild(link);
       }
-    }
-    changeBorderForSafari();
+
+      const ua = navigator.userAgent.toLowerCase();
+      let head = document.getElementsByTagName('HEAD')[0];
+      if (ua.includes("safari")) {
+        includeStyle(head, "safari-style.css");
+      }
+      if (ua.includes("iphone") || ua.includes("iphone")) {
+        includeStyle(head, "mobile-style.css");
+      }
 </script>
 
 </head>
