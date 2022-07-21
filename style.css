@@ -218,3 +218,17 @@ li.chatli {
   overflow-wrap: break-word;
   text-align: left;
 }
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+}
