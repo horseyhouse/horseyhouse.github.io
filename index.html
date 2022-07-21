@@ -30,6 +30,9 @@
         head.appendChild(link);
       }
 
+      // this is hella hacky but i refuse to give up the rotating star borders!!!
+      // FUCK safari for being buggy af!!!
+      // https://stackoverflow.com/questions/21390896/border-image-rounding-not-rounding-correctly-in-safari
       const ua = navigator.userAgent.toLowerCase();
       console.log(ua);
       const head = document.getElementsByTagName('HEAD')[0];
@@ -243,10 +246,10 @@
         summary: message,
         tags: ['oyster']
       }); message=''">
+        <div class="one-line">
         <input v-model="message">
-        <div class="container">
-          <input type="image" src="./media/oyster.jpg" border="0" alt="Submit" />
-          <div class="centered">Submit</div>
+        <input type="image" src="./media/oyster.jpg" border="0" alt="Submit" />
+        <div class="centered">Submit</div>
         </div>
       </form>
     </graffiti-collection>

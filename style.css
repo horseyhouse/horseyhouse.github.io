@@ -219,16 +219,14 @@ li.chatli {
   text-align: left;
 }
 
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
 .centered {
   color: black;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-15deg);
+  transform: translate(10%, -150%) rotate(-20deg);
+  font-size: 140%;
+}
+
+.one-line {
+  display: flex;
+  flex-flow: row;
 }
