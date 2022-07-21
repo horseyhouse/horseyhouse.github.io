@@ -222,11 +222,12 @@ li.chatli {
 .centered {
   color: black;
   position: absolute;
-  transform: translate(10%, -150%) rotate(-20deg);
+  transform: translate(-50%, -50%) rotate(-20deg);
   font-size: 140%;
+  top: 50%;
+  left: 50%;
 }
 
 .one-line {
-  display: flex;
-  flex-flow: row;
+  display: inline-flex;
 }
