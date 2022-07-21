@@ -228,6 +228,16 @@ li.chatli {
   left: 50%;
 }
 
+.text-input {
+  margin-right: 5px;
+  width: 90%;
+  height: inherit;
+  padding: 0 0 0 0;
+  border-width: 0 0 0 0;
+}
+
 .one-line {
-  display: inline-flex;
+  display: flex;
+  flex-flow: row;
+  height: 100px;
 }
