@@ -1,0 +1,9 @@
+li {
+  border-width: 5px;
+  border-style: dotted;
+  border-color: yellow;
+
+  border-image-source: unset;
+  border-image-slice: unset;
+  border-image-repeat: unset;
+}

@@ -90,7 +90,8 @@ ol li {
 
 li {
   /*star border*/
-  border: 1em solid;
+  border-width: 1em;
+  border-style: solid;
   border-image-source: url(media/9stars.gif);
   border-image-slice: 33.33%;
   border-image-repeat: round;
