@@ -19,7 +19,6 @@
   <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
   <script src="components.js"></script>
   <script>
-
       function includeStyle(head, fileName) {
         // Create new link Element
         let link = document.createElement('link');
@@ -32,11 +31,11 @@
       }
 
       const ua = navigator.userAgent.toLowerCase();
-      let head = document.getElementsByTagName('HEAD')[0];
+      const head = document.getElementsByTagName('HEAD')[0];
       if (ua.includes("safari")) {
         includeStyle(head, "safari-style.css");
       }
-      if (ua.includes("iphone") || ua.includes("iphone")) {
+      if (ua.includes("iphone") || ua.includes("android")) {
         includeStyle(head, "mobile-style.css");
       }
 </script>

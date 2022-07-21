@@ -1,9 +1,8 @@
-li {
-  border-width: 5px;
-  border-style: dotted;
-  border-color: yellow;
+a:hover, a > li:hover, label:hover {
+  animation: unset;
+  cursor: unset;
+}
 
-  border-image-source: unset;
-  border-image-slice: unset;
-  border-image-repeat: unset;
+body {
+  overflow-x: scroll;
 }
