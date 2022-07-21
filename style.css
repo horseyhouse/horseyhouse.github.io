@@ -187,7 +187,6 @@ input:is(:not(:checked):hover,:checked:not(:hover)) + img {
 
 .myli {
   aspect-ratio: 0.4;
-  flex-basis: 20%;
   padding-bottom: 10px;
 }
 
