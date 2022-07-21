@@ -34,7 +34,7 @@
       console.log(ua);
       const head = document.getElementsByTagName('HEAD')[0];
       //TODO: for some reason this code is being executed on firefox on mobile. why?
-      if (ua.includes("safari")) {
+      if (ua.includes("safari") && !ua.includes("chrome")) {
         includeStyle(head, "safari-style.css");
       }
       //TODO: still being cut off / looks like shiiet on mobile
