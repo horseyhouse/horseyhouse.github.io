@@ -244,7 +244,10 @@
       <form v-else @submit.prevent="messages.update({
         type: 'post',
         summary: message,
-        tags: ['oyster']
+        tags: ['oyster'],
+        _inContextIf: [{
+          _queryFailsWithout: [ 'tags.0' ]
+        }]
       }); message=''">
         <div class="one-line">
         <input v-model="message">
