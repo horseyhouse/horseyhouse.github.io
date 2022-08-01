@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="./style.css">
-  <title>Oysters 69</title>
+  <title>Horsey House</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
     // Redirect from 404
@@ -55,10 +55,10 @@
     <router-link to="/">
       Hello
       <template v-if="$graffiti.loggedIn">
-        Anonymous Oyster
+        Anonymous Horse
       </template>
       <template v-else>
-        Fellow Oyster
+        Fellow Horse
       </template>
     </router-link>
     <log-in></log-in>
@@ -136,13 +136,13 @@
         External Links
       </h3>
       <ol>
-        <a href="http://tfh.sh:46202/transmission/web/" target="_blank">
+        <a href="https://p2p.theias.place" target="_blank">
           <li>
             <img src="./media/torrenting.gif" alt="Torrenting">
             <img src="./media/pirate-flag.gif" alt="Torrenting">
           </li>
         </a>
-        <a href="https://app.plex.tv" target="_blank">
+        <a href="https://plex.theias.place" target="_blank">
           <li>
             <img src="./media/plex.gif" alt="Plex">
             <img src="./media/film.gif" alt="Plex">
@@ -244,7 +244,10 @@
       <form v-else @submit.prevent="messages.update({
         type: 'post',
         summary: message,
-        tags: ['oyster']
+        tags: ['oyster'],
+        _inContextIf: [{
+          _queryFailsWithout: [ 'tags.0' ]
+        }]
       }); message=''">
         <div class="one-line">
         <input v-model="message">
