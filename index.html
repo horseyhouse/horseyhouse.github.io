@@ -7,359 +7,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
     // Redirect from 404
-    (function(){
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-      if (redirect && redirect != location.href) {
-        history.replaceState(null, null, redirect);
-      }
-    })();
+    var redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redirect && redirect != location.href) {
+      history.replaceState(null, null, redirect);
+    }
   </script>
-  <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
-  <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
-  <script src="components.js"></script>
-  <script>
-      function includeStyle(head, fileName) {
-        // Create new link Element
-        let link = document.createElement('link');
-        // set the attributes for link element
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = fileName;
-        // Append link element to HTML head
-        head.appendChild(link);
-      }
-
-      // this is hella hacky but i refuse to give up the rotating star borders!!!
-      // FUCK safari for being buggy af!!!
-      // https://stackoverflow.com/questions/21390896/border-image-rounding-not-rounding-correctly-in-safari
-      const ua = navigator.userAgent.toLowerCase();
-      console.log(ua);
-      const head = document.getElementsByTagName('HEAD')[0];
-      //TODO: for some reason this code is being executed on firefox on mobile. why?
-      if (ua.includes("safari") && !ua.includes("chrome")) {
-        includeStyle(head, "safari-style.css");
-      }
-      //TODO: still being cut off / looks like shiiet on mobile
-      if (ua.includes("iphone") || ua.includes("android")) {
-        includeStyle(head, "mobile-style.css");
-      }
-</script>
-
 </head>
 
 <body>
-<div id="app">
-  <h1>
-    <log-in></log-in>
-    <router-link to="/">
-      Hello
-      <template v-if="$graffiti.loggedIn">
-        Anonymous Horse
-      </template>
-      <template v-else>
-        Fellow Horse
-      </template>
-    </router-link>
-    <log-in></log-in>
-  </h1>
-  <h2>
-    <img src="./media/construction.gif" alt="Under Construction">
-  </h2>
 
-  <router-view></router-view>
-</div>
-
-<script type="text/x-template" id="login">
-  <label>
-    <input type="checkbox" class="login"
-      :checked="$graffiti.loggedIn"
-      @change="$event.target.checked?
-        $graffiti.logIn() :
-        $graffiti.logOut()">
-    <img src="./media/oyster.gif" />
-    <p>
-      ↑ click here to log
-      <template v-if="$graffiti.loggedIn">
-        out
-      </template>
-      <template v-else>
-        in
-      </template>
-      ↑
-    </p>
-  </label>
-</script>
-
-<script type="text/x-template" id="home">
-  <div class="columns">
-    <div>
-      <h3>
-        Internal Links
-      </h3>
-      <ol>
-        <router-link to="/about">
-          <li>
-            <img src="./media/about.gif" alt="About">
-            <img src="./media/hamster-house.gif" alt="About">
-          </li>
-        </router-link>
-        <router-link to="/chat">
-          <li>
-            <img src="./media/message.gif" alt="Chat">
-            <img src="./media/boardadver.gif" alt="Chat">
-          </li>
-        </router-link>
-        <router-link to="/photos">
-          <li>
-            <img src="./media/redPhotos.gif" alt="Photos">
-            <img src="./media/furby-cam.GIF" alt="Photos">
-          </li>
-        </router-link>
-        <router-link to="/events">
-          <li>
-            <img src="./media/events.gif" alt="Events">
-            <img src="./media/calendar.gif" alt="Events">
-          </li>
-        </router-link>
-        <router-link to="/ledger">
-          <li>
-            <img src="./media/ledger.gif" alt="Ledger">
-            <img src="./media/monopoly-man.gif" alt="Ledger">
-          </li>
-        </router-link>
-      </ol>
-    </div>
-
-    <div>
-      <h3>
-        External Links
-      </h3>
-      <ol>
-        <a href="https://p2p.theias.place" target="_blank">
-          <li>
-            <img src="./media/torrenting.gif" alt="Torrenting">
-            <img src="./media/pirate-flag.gif" alt="Torrenting">
-          </li>
-        </a>
-        <a href="https://plex.theias.place" target="_blank">
-          <li>
-            <img src="./media/plex.gif" alt="Plex">
-            <img src="./media/film.gif" alt="Plex">
-          </li>
-        </a>
-        <a href="https://github.com/horseyhouse" target="_blank">
-          <li>
-            <img src="./media/github2.gif" alt="Github">
-            <img src="./media/compooper.gif" alt="Github">
-          </li>
-        </a>
-        <a href="https://drive.google.com/drive/folders/1X1ASnjqRPqbdrAG7p2Xe34t1mtIDAzK7" target="_blank">
-          <li>
-            <img src="./media/drive.gif" alt="Google Drive">
-            <img src="./media/google.gif" alt="Google Drive">
-          </li>
-        </a>
-      </ol>
-    </div>
+  <div id="app">
+    <horsey-header></horsey-header>
   </div>
-</script>
 
-<script type="text/x-template" id="about">
-  <h3>
-    <img src="./media/about.gif" alt="About">
-  </h3>
-  <h5>Meet the hoez <3</h5>
-  <ol>
-    <li class="myli">
-      <p class="myp">Theia</p>
-      <img src="./photos/theia.jpg" alt="Theia" class="myimg">
-        <h4>she/her</h4>
-        <h5>dead bird collector</h5>
-        <h5>phd baddie</h5>
-        <h5>makes a mean ooey gooey sauce</h5>
-    </li>
-    <li class="myli">
-      <p class="myp">Moogy</p>
-      <img src="./photos/moog.jpg" alt="Moogy" class="myimg">
-      <h4>she/they</h4>
-      <h5>trash gremlin</h5>
-      <h5>noodle wrangler</h5>
-      <h5>general whore</h5>
-    </li>
-    <li class="myli">
-      <p class="myp">Lydia</p>
-      <img src="./photos/lyd.jpeg" alt="Lydia" class="myimg">
-        <h4>she/her</h4>
-        <h5>mommy</h5>
-        <h5>will check you into the boards</h5>
-        <h5>good with her hands ;)</h5>
-    </li>
-    <li class="myli">
-      <p class="myp">Ru</p>
-      <img src="./photos/ru.jpg" alt="Ru" class="myimg">
-      <h4>they/them</h4>
-      <h5>LOVES trains</h5>
-      <h5>himbo appreciator</h5>
-      <h5>crossword slut</h5>
-    </li>
-    <li class="myli">
-      <p class="myp">Noodle</p>
-      <img src="./photos/noodle.jpg" alt="Noodle" class="myimg">
-        <h4>she/they</h4>
-        <h5>rodent on stilts</h5>
-        <h5>snuggly baby</h5>
-        <h5>poops on the floor</h5>
-    </li>
-    <li class="myli">
-      <p class="myp">Jinni</p>
-      <!---<img src="./media/monopoly-man.gif" alt="Ledger" class="myimg">-->
-        <h4>she/her</h4>
-        <h5>grumpy old lady</h5>
-        <h5>loves butt scratches</h5>
-        <h5>poops in the closet</h5>
-    </li>
-  </ol>
-</script>
+  <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
+  <script type="module">
+    import Graffiti from "https://graffiti.csail.mit.edu/graffiti-x-vue/graffiti.js"
+    import HorseyHeader from './components/header.js'
 
-<script type="text/x-template" id="chat">
-  <h3>
-    Chat
-  </h3>
-  <p>
-    <graffiti-collection v-slot="messages"
-      :query="{
-        type: 'post',
-        summary: { $type: 'string' },
-        tags: 'oyster'
-      }">
-      <ul>
-        <li v-for="m in messages.objects.slice().reverse()" :key="m._id" class="chatli">
-          {{m.summary}}
-        </li>
-      </ul>
-      <p v-if="!$graffiti.loggedIn">
-        u gotta b logged in to chat homie
-      </p>
-      <form v-else @submit.prevent="messages.update({
-        type: 'post',
-        summary: message,
-        tags: ['oyster'],
-        _inContextIf: [{
-          _queryFailsWithout: [ 'tags.0' ]
-        }]
-      }); message=''">
-        <div class="one-line">
-        <input v-model="message">
-          <button type="submit" style="position: relative; height: inherit;">
-            <img src="./media/oyster.jpg" style="height: inherit" alt="Submit"/>
-            <div class="centered">Submit</div>
-          </button>
-        </div>
-      </form>
-    </graffiti-collection>
-  </p>
-</script>
-
-<script type="text/x-template" id="events">
-  <h3>
-    <img src="./media/events.gif" alt="Events">
-  </h3>
-  <p>
-    coming soon...
-  </p>
-</script>
-
-<script type="text/x-template" id="ledger">
-  <h3>
-    <img src="./media/ledger.gif" alt="Ledger">
-  </h3>
-  <p>
-    coming soon...
-  </p>
-</script>
-
-<script type="text/x-template" id="photos">
-  <h3>
-    <img src="./media/redPhotos.gif">
-  </h3>
-
-  <ul>
-    <li>
-      <img src="./photos/IMG_0007.HEIC">
-      <img src="./photos/IMG_0008.HEIC">
-      <p>the view from the couch</p>
-    </li>
-    <li>
-      <img src="./photos/IMG_0234.HEIC">
-      <img src="./photos/IMG_4821.HEIC">
-      <p>2 hoes</p>
-    </li>
-    <li>
-      <img style="max-width: 100%" src="./photos/IMG_5199.HEIC">
-      <p>pets bask in the sun in theia's room</p>
-    </li>
-    <li>
-      <img src="./photos/IMG_5008.HEIC">
-      <img src="./photos/IMG_5009.HEIC">
-      <p>theia's gooey gooey sauce</p>
-    </li>
-    <li>
-      <img src="./photos/IMG_5005.HEIC">
-      <img src="./photos/IMG_5006.HEIC">
-      <p>trust the process</p>
-    </li>
-    <li>
-      <img src="./photos/IMG_4528.HEIC">
-      <img src="./photos/IMG_4536.HEIC">
-      <p>we hate mass save!</p>
-    </li>
-    <li>
-      <img src="./photos/IMG_4862.HEIC">
-      <img src="./photos/IMG_0051.HEIC">
-      <p>noodle vibes in moogy's room</p>
-    </li>
-  </ul>
-</script>
-<script type="module">
-  import Graffiti from "https://csail-graffiti.github.io/vue/plugin.js"
-
-  const Login = { template: '#login' }
-
-  const Router = VueRouter.createRouter({
-    history: VueRouter.createWebHistory(),
-    routes: [
-      { path: '/', component: {
-        template: '#home'
-      }},
-      { path: '/about', component: {
-        template: '#about'
-      }},
-      { path: '/events', component: {
-          template: '#events'
-        }},
-      { path: '/ledger', component: {
-          template: '#ledger'
-        }},
-      { path: '/photos', component: {
-        template: '#photos'
-      }},
-      { path: '/chat', component: {
-        template: '#chat',
-        data: () => ({
-          message: ''
-        })
+    Graffiti(Vue).then(g=> {
+      function lazyDoc(name, path=null) { return {
+        path: path?path:`/${name}`,
+        component: async ()=> {
+          const file = await import(`./components/${name}.js`)
+          return file.default(g)
+        }
       }}
-    ],
-  })
 
-  Graffiti('https://graffiti.csail.mit.edu').then(g=> {
-    Vue.createApp().use(g)
-    .component('log-in', Login)
-    .use(Router)
-    .mount('#app')
-  })
-</script>
+      const Router = VueRouter.createRouter({
+        history: VueRouter.createWebHistory(),
+        routes: [
+          lazyDoc('home', '/'),
+          lazyDoc('about'),
+          lazyDoc('chat'),
+          lazyDoc('events'),
+          lazyDoc('ledger'),
+          lazyDoc('photos'),
+        ],
+        scrollBehavior (to, from, savedPosition) {
+          return {left: 0, top: 0}
+        }
+      })
+
+      Vue.createApp()
+        .component('HorseyHeader', HorseyHeader(g))
+        .use(Router)
+        .mount('#app')
+    })
+  </script>
 
 </body>
 </html>
