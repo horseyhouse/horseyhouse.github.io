@@ -9,7 +9,7 @@
     // Redirect from 404
     var redirect = sessionStorage.redirect;
     delete sessionStorage.redirect;
-    if (redirect && redirect != location.href) {
+    if (redirect && redirect !== location.href) {
       history.replaceState(null, null, redirect);
     }
   </script>
@@ -21,6 +21,33 @@
     <horsey-header></horsey-header>
   </div>
 
+  <script>
+    function includeStyle(head, fileName) {
+      // Create new link Element
+      let link = document.createElement('link');
+      // set the attributes for link element
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = fileName;
+      // Append link element to HTML head
+      head.appendChild(link);
+    }
+
+    // this is hella hacky but i refuse to give up the rotating star borders!!!
+    // FUCK safari for being buggy af!!!
+    // https://stackoverflow.com/questions/21390896/border-image-rounding-not-rounding-correctly-in-safari
+    const ua = navigator.userAgent.toLowerCase();
+    console.log(ua);
+    const head = document.getElementsByTagName('HEAD')[0];
+    //TODO: for some reason this code is being executed on firefox on mobile. why?
+    if (ua.includes("safari") && !ua.includes("chrome")) {
+      includeStyle(head, "./special-styles/safari-style.css");
+    }
+    //TODO: still being cut off / looks like shiiet on mobile
+    if (ua.includes("iphone") || ua.includes("android")) {
+      includeStyle(head, "./special-styles/mobile-style.css");
+    }
+  </script>
   <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
   <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
   <script type="module">
