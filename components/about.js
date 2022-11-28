@@ -42,8 +42,8 @@ export default function() { return {
         <img src="./photos/quinn.jpg" alt="Quinn" class="myimg">
         <h4>she/they</h4>
         <h5>resident hippie</h5>
-        <h5>doesn't kill plants</h5>
-        <h5>sings good</h5>
+        <h5>art hoe on that music shit!</h5>
+        <h5>ayye yall wanna smoke a bowl</h5>
       </li>
       <li class="myli">
         <p class="myp">Noodle</p>
