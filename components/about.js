@@ -38,6 +38,14 @@ export default function() { return {
         <h5>crossword slut</h5>
       </li>
       <li class="myli">
+        <p class="myp">Quinn</p>
+        <img src="./photos/quinn.jpg" alt="Quinn" class="myimg">
+        <h4>she/they</h4>
+        <h5>resident hippie</h5>
+        <h5>doesn't kill plants</h5>
+        <h5>sings good</h5>
+      </li>
+      <li class="myli">
         <p class="myp">Noodle</p>
         <img src="./photos/noodle.jpg" alt="Noodle" class="myimg">
           <h4>she/they</h4>
@@ -49,10 +57,22 @@ export default function() { return {
         <p class="myp">Jinni</p>
         <img src="./photos/jinni.jpg" alt="Jinni" class="myimg">
           <h4>she/her</h4>
-          <h5>grumpy old lady</h5>
+          <h5>sweet n' sour old lady</h5>
           <h5>loves butt scratches</h5>
           <h5>poops in the closet</h5>
       </li>
+      <li class="myli">
+        <p class="myp">Sprinkles</p>
+        <img src="./photos/sprink.jpg" alt="Sprinkles" class="myimg">
+          <h4>she/they</h4>
+          <h5>bright eyes, smooth brain</h5>
+          <h5>shoelace connoisseur</h5>
+          <h5>bee herder</h5>
+      </li>
+    </ol>
+
+    <h5>Alumni</h5>
+    <ol>
       <li class="myli">
         <p class="myp">Emily</p>
         <img src="./photos/emily.jpg" alt="Jinni" class="myimg">

@@ -192,7 +192,7 @@ input:is(:not(:checked):hover,:checked:not(:hover)) + img {
 }
 
 .myp {
-  font-size: 5em;
+  font-size: 4em;
   margin-top: 0;
   margin-bottom: 0;
 }
