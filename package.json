@@ -1,0 +1,33 @@
+{
+  "name": "horseyhouse.github.io",
+  "version": "1.0.0",
+  "description": "horse horse horse",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"horse test\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horseyhouse/horseyhouse.github.io.git"
+  },
+  "keywords": [
+    "horse",
+    "horse",
+    "horse"
+  ],
+  "author": "horse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horseyhouse/horseyhouse.github.io/issues"
+  },
+  "homepage": "https://github.com/horseyhouse/horseyhouse.github.io#readme",
+  "dependencies": {
+    "@graffiti-garden/actor-client": "^1.0.10",
+    "@graffiti-garden/graffiti-p2p": "^1.0.1",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.9",
+    "vue-router": "^4.2.4"
+  }
+}

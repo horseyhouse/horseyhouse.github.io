@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="./style.css">
-  <title>Horsey House</title>
+  <title>Graffiti Actor Manager</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
     // Redirect from 404
@@ -13,14 +12,6 @@
       history.replaceState(null, null, redirect);
     }
   </script>
-</head>
-
-<body>
-
-  <div id="app">
-    <horsey-header></horsey-header>
-  </div>
-
   <script>
     function includeStyle(head, fileName) {
       // Create new link Element
@@ -48,42 +39,35 @@
       includeStyle(head, "./special-styles/mobile-style.css");
     }
   </script>
-  <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
-  <script src="https://unpkg.com/vue-router@4.0.16/dist/vue-router.global.prod.js"></script>
+</head>
+<body>
+  <div id="app"></div>
   <script type="module">
-    import Graffiti from "https://graffiti.garden/graffiti-x-vue/graffiti.js"
-    import HorseyHeader from './components/header.js'
+    import * as Vue from 'vue'
+    import * as VueRouter from 'vue-router'
+    import '@graffiti-garden/actor-client/client.css'
+    import GraffitiPlugin from '@graffiti-garden/graffiti-p2p/plugins/vue'
+    import './style.css'
 
-    Graffiti(Vue).then(g=> {
-      function lazyDoc(name, path=null) { return {
-        path: path?path:`/${name}`,
-        component: async ()=> {
-          const file = await import(`./components/${name}.js`)
-          return file.default(g)
-        }
-      }}
+    import App from './App.vue'
+    import Home from './components/Home.vue'
+    import About from './components/About.vue'
 
-      const Router = VueRouter.createRouter({
-        history: VueRouter.createWebHistory(),
-        routes: [
-          lazyDoc('home', '/'),
-          lazyDoc('about'),
-          lazyDoc('chat'),
-          lazyDoc('events'),
-          lazyDoc('ledger'),
-          lazyDoc('photos'),
-        ],
-        scrollBehavior (to, from, savedPosition) {
-          return {left: 0, top: 0}
-        }
-      })
-
-      Vue.createApp()
-        .component('HorseyHeader', HorseyHeader(g))
-        .use(Router)
-        .mount('#app')
+    const Router = VueRouter.createRouter({
+      history: VueRouter.createWebHistory(),
+      routes: [
+        { path: '/', component: Home },
+        { path: '/about', component: About }
+      ],
+      scrollBehavior (to, from, savedPosition) {
+        return {left: 0, top: 0}
+      }
     })
-  </script>
 
+    Vue.createApp(App)
+      .use(GraffitiPlugin(Vue))
+      .use(Router)
+      .mount('#app')
+  </script>
 </body>
 </html>
