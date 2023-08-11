@@ -20,7 +20,7 @@
         <router-link to="/photos">
           <li>
             <img src="../media/redPhotos.gif" alt="Photos">
-            <img src="../media/furby-cam.GIF" alt="Photos">
+            <img src="../media/furby-cam.gif" alt="Photos">
           </li>
         </router-link>
         <router-link to="/events">
