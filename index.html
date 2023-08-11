@@ -25,12 +25,14 @@
     import App from './App.vue'
     import Home from './components/Home.vue'
     import About from './components/About.vue'
+    import Photos from './components/Photos.vue'
 
     const Router = VueRouter.createRouter({
       history: VueRouter.createWebHistory(),
       routes: [
         { path: '/', component: Home },
-        { path: '/about', component: About }
+        { path: '/about', component: About },
+        { path: '/photos', component: Photos }
       ],
       scrollBehavior (to, from, savedPosition) {
         return {left: 0, top: 0}
@@ -40,6 +42,7 @@
     Vue.createApp(App)
       .use(GraffitiPlugin(Vue))
       .use(Router)
+      .provide('me', Vue.ref(null))
       .mount('#app')
   </script>
 </body>

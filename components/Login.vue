@@ -1,5 +1,10 @@
+<script setup>
+import { inject } from 'vue'
+const me = inject('me')
+</script>
+
 <template>
-  <button @click="$gf.selectActor" class="login">
+  <button @click="$gf.selectActor().then(actor=>me=actor)" class="login">
     <img src="../media/oyster.gif" />
     <p>
       ↑ click here to log
