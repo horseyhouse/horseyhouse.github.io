@@ -25,7 +25,7 @@
   "homepage": "https://github.com/horseyhouse/horseyhouse.github.io#readme",
   "dependencies": {
     "@graffiti-garden/actor-client": "^1.0.10",
-    "@graffiti-garden/graffiti-p2p": "^1.0.1",
+    "@graffiti-garden/graffiti-p2p": "^1.0.2",
     "@vitejs/plugin-vue": "^4.2.3",
     "vite": "^4.4.9",
     "vue-router": "^4.2.4"
