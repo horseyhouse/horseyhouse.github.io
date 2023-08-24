@@ -1,7 +1,6 @@
 <script setup>
 import { ref, inject } from 'vue'
 const gf = inject('graffiti')
-const me = inject('me')
 
 const imageData = ref(null)
 const loading = ref(false)
@@ -34,7 +33,7 @@ async function postImage() {
     type: "Image",
     src: imageData.value,
     context: [context]
-  }, me.value)
+  })
 }
 
 
@@ -42,7 +41,7 @@ const { posts } = gf.usePosts(context)
 </script>
 
 <template>
-  <template v-if="!me">
+  <template v-if="!$gf.me">
     You gotta log in horsie
   </template>
   <template v-else>
@@ -55,7 +54,7 @@ const { posts } = gf.usePosts(context)
     <ul>
       <li v-for="post of posts">
         <img :src="post.src" />
-        <menu v-if="post.actor==me">
+        <menu v-if="post.actor==$gf.me">
           <li @click="$gf.delete(post)">
             Delete
           </li>

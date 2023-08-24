@@ -1,8 +1,5 @@
 <script setup>
 import Login from './components/Login.vue'
-import { inject } from 'vue'
-
-const me = inject('me')
 </script>
 
 <template>
@@ -11,7 +8,7 @@ const me = inject('me')
       <Login />
       <RouterLink to="/">
         Hello
-        <template v-if="!me">
+        <template v-if="!$gf.me">
           Anonymous Horse
         </template>
         <template v-else>

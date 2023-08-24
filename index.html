@@ -18,8 +18,9 @@
   <script type="module">
     import * as Vue from 'vue'
     import * as VueRouter from 'vue-router'
+    import GraffitiPlugin from '@graffiti-garden/plugin-vue'
+
     import '@graffiti-garden/actor-client/client.css'
-    import GraffitiPlugin from '@graffiti-garden/graffiti-p2p/plugins/vue'
     import './style.css'
 
     import App from './App.vue'
@@ -40,9 +41,8 @@
     })
 
     Vue.createApp(App)
-      .use(GraffitiPlugin(Vue))
+      .use(GraffitiPlugin)
       .use(Router)
-      .provide('me', Vue.ref(localStorage.getItem("me")))
       .mount('#app')
   </script>
 </body>
