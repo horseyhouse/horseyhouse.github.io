@@ -92,12 +92,20 @@ li {
   /*star border*/
   border-width: 1em;
   border-style: solid;
-  border-image-source: url(media/9stars.gif);
+  border-image-source: url(media/9stars.png);
   border-image-slice: 33.33%;
-  border-image-repeat: round;
+  border-image-repeat: repeat;
   /*inner elements*/
   display: inline-block;
   text-align: center;
+}
+
+/* Chrome and safari get your shit together */
+@supports (-moz-appearance:none) {
+  li {
+    border-image-source: url(./media/9stars.gif);
+    border-image-repeat: round;
+  }
 }
 
 ul li img {

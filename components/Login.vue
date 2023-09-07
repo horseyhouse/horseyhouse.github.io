@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
   <button @click="$gf.selectActor()" class="login">
     <img src="../media/oyster.gif" />
