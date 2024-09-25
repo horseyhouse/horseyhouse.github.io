@@ -1,49 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Horsey House</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    // Redirect from 404
-    var redirect = sessionStorage.redirect;
-    delete sessionStorage.redirect;
-    if (redirect && redirect !== location.href) {
-      history.replaceState(null, null, redirect);
-    }
-  </script>
-</head>
-<body>
-  <div id="app"></div>
-  <script type="module">
-    import * as Vue from 'vue'
-    import * as VueRouter from 'vue-router'
-    import GraffitiPlugin from '@graffiti-garden/plugin-vue'
-
-    import '@graffiti-garden/actor-client/client.css'
-    import './style.css'
-
-    import App from './App.vue'
-    import Home from './components/Home.vue'
-    import About from './components/About.vue'
-    import Photos from './components/Photos.vue'
-
-    const Router = VueRouter.createRouter({
-      history: VueRouter.createWebHistory(),
-      routes: [
-        { path: '/', component: Home },
-        { path: '/about', component: About },
-        { path: '/photos', component: Photos }
-      ],
-      scrollBehavior (to, from, savedPosition) {
-        return {left: 0, top: 0}
-      }
-    })
-
-    Vue.createApp(App)
-      .use(GraffitiPlugin)
-      .use(Router)
-      .mount('#app')
-  </script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <title>Horsey House</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module" src="./main.ts"></script>
+    </body>
 </html>
