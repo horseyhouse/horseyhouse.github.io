@@ -27,8 +27,8 @@
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
     "@fullcalendar/vue3": "^6.1.15",
-    "@graffiti-garden/client-vue": "^0.1.5",
-    "@inrupt/solid-client-authn-browser": "^2.2.4",
+    "@graffiti-garden/implementation-remote": "^0.6.1",
+    "@graffiti-garden/wrapper-vue": "^0.6.4",
     "vue": "^3.5.6",
     "vue-router": "^4.4.5"
   },

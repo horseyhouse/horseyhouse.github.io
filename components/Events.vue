@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from "vue";
-import { useGraffiti, useDiscover } from "@graffiti-garden/client-vue";
+import { useGraffitiDiscover } from "@graffiti-garden/wrapper-vue";
 import { type CalendarOptions } from "@fullcalendar/core";
 import FullCalendar from "@fullcalendar/vue3";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -9,10 +9,10 @@ import interactionPlugin from "@fullcalendar/interaction";
 const eventSchema = {
     properties: {
         value: {
-            required: ["startTime", "content", "location"],
+            required: ["startTime", "content"],
             properties: {
                 startTime: {
-                    type: "string",
+                    type: "number",
                 },
                 content: {
                     type: "string",
@@ -23,9 +23,14 @@ const eventSchema = {
 } as const;
 
 const channels = ["The Glue Factory"];
-const { results } = useDiscover(channels, eventSchema);
+const { results } = useGraffitiDiscover(channels, eventSchema);
 const events = computed(() => {
-    return results.value.map((result) => {
+    return results.value.map<{
+        title: string;
+        start: Date;
+        content: string;
+        url: string;
+    }>((result) => {
         const startTime = new Date(result.value.startTime);
         const content = result.value.content;
         const title = "Glue Factory Show";
@@ -33,12 +38,11 @@ const events = computed(() => {
             title,
             start: startTime,
             content,
-            url: `https://gluefactory.live/#${useGraffiti().objectToUrl(result)}`,
+            url: `https://gluefactory.live/#${result.url}`,
         };
     });
 });
 
-const selectedEvent = ref<string | null>(null);
 const calendarOptions: CalendarOptions = reactive({
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: "dayGridMonth",

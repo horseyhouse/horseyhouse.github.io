@@ -4,9 +4,9 @@ import "./style.css";
 import App from "./App.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
-import LoginPage from "./components/LoginPage.vue";
 import Events from "./components/Events.vue";
-import { registerSolidSession } from "@graffiti-garden/client-vue";
+import { GraffitiPlugin } from "@graffiti-garden/wrapper-vue";
+import { GraffitiRemote } from "@graffiti-garden/implementation-remote";
 
 const redirect = sessionStorage.redirect;
 delete sessionStorage.redirect;
@@ -19,7 +19,6 @@ const Router = createRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/about", component: About },
-    { path: "/login", component: LoginPage },
     { path: "/events", component: Events },
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -27,11 +26,9 @@ const Router = createRouter({
   },
 });
 
-registerSolidSession({
-  onSessionRestore: (href: string) => {
-    const url = new URL(href);
-    Router.replace(url.pathname + url.search + url.hash);
-  },
-});
-
-createApp(App).use(Router).mount("#app");
+createApp(App)
+  .use(Router)
+  .use(GraffitiPlugin, {
+    graffiti: new GraffitiRemote(),
+  })
+  .mount("#app");
